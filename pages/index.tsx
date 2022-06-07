@@ -418,6 +418,7 @@ const Home: NextPage = () => {
           bg="#f0f0f0"
         >
           <ChakraImage
+            onLoad={() => console.log("onLoad")}
             height={300}
             fit="cover"
             borderTopLeftRadius="25"
@@ -486,7 +487,7 @@ const Home: NextPage = () => {
             justify="space-between"
           >
             <Solution image="/app.png" title="Aplicativo de celular" />
-            <Solution image="identity.jpeg" title="Identidade visual" />
+            <Solution image="/identity-alt.png" title="Identidade visual" />
           </Flex>
         </Flex>
       </Flex>
