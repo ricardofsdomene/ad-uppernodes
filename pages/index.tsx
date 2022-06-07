@@ -184,17 +184,22 @@ const Home: NextPage = () => {
         justify="space-between"
         align={isMobile ? "normal" : "center"}
         mx="auto"
-        mt={size.width < 700 ? "6" : "10"}
+        mt="10"
         style={{
           paddingLeft: size.width > 1000 ? 0 : 20,
           paddingRight: size.width < 1000 ? 20 : 55,
         }}
       >
-        <Flex flexDir="column" maxW={size.width > 700 ? "50vw" : "100%"}>
+        <Flex flexDir="column" maxW={size.width > 1000 ? "50vw" : "100%"}>
           <Text color="green" fontSize="lg">
             Sobre nós
           </Text>
-          <Text color="green" fontSize="xl" mb="2" fontWeight="bold">
+          <Text
+            color="green"
+            fontSize={isMobile ? "xl" : "2xl"}
+            mb="2"
+            fontWeight="bold"
+          >
             Somos uma agência digital desenvolvida para o mundo digital, não
             somos uma empresa, somos um veiculo.
           </Text>
@@ -222,7 +227,12 @@ const Home: NextPage = () => {
           <Text color="green" fontSize="lg">
             Nosso time é formado por
           </Text>
-          <Text color="green" fontSize="xl" mb="2" fontWeight="bold">
+          <Text
+            color="green"
+            fontSize={isMobile ? "xl" : "2xl"}
+            mb="2"
+            fontWeight="bold"
+          >
             Um programador, um designer e um publicitário.
           </Text>
           {isMobile && (
@@ -236,20 +246,22 @@ const Home: NextPage = () => {
                 src="https://github.com/0xrfsd.png"
               />
               <ChakraImage
+                ml="1"
                 borderRadius="full"
                 style={{
                   height: isMobile ? 40 : 50,
                   width: isMobile ? 40 : 50,
                 }}
-                src="https://github.com/ricardofsdomene.png"
+                src="/hosben.jpeg"
               />
               <ChakraImage
+                ml="1"
                 borderRadius="full"
                 style={{
                   height: isMobile ? 40 : 50,
                   width: isMobile ? 40 : 50,
                 }}
-                src="https://github.com/ricardofsdomene.png"
+                src="/trinda.jpeg"
               />
             </Flex>
           )}
@@ -291,31 +303,25 @@ const Home: NextPage = () => {
                   height: isMobile ? 40 : 50,
                   width: isMobile ? 40 : 50,
                 }}
-                src="https://github.com/0xrfsd.png"
+                src="https://github.com/ricardofsdomene.png"
               />
               <ChakraImage
+                ml="1"
                 borderRadius="full"
                 style={{
                   height: isMobile ? 40 : 50,
                   width: isMobile ? 40 : 50,
                 }}
-                src="https://github.com/ricardofsdomene.png"
+                src="/hosben.jpeg"
               />
               <ChakraImage
+                ml="1"
                 borderRadius="full"
                 style={{
                   height: isMobile ? 40 : 50,
                   width: isMobile ? 40 : 50,
                 }}
-                src="https://github.com/ricardofsdomene.png"
-              />
-              <ChakraImage
-                borderRadius="full"
-                style={{
-                  height: isMobile ? 40 : 50,
-                  width: isMobile ? 40 : 50,
-                }}
-                src="https://github.com/ricardofsdomene.png"
+                src="/trinda.jpeg"
               />
             </Flex>
           )}
@@ -339,33 +345,25 @@ const Home: NextPage = () => {
           paddingRight: size.width < 1000 ? 20 : 55,
         }}
       >
-        <Flex flexDir="column" maxW={1000}>
-          <Text
-            color="#555"
-            w="100%"
-            textAlign="center"
-            fontWeight="light"
-            fontSize="2xl"
-          >
+        <Flex flexDir="column" maxW={size.width > 1000 ? "50vw" : "100%"}>
+          <Text color="#333" fontSize="lg">
             Achamos legal você saber
           </Text>
           <Text
             color="#333"
-            w="100%"
-            textAlign="center"
-            fontSize="lg"
+            fontSize={isMobile ? "xl" : "2xl"}
             mb="2"
-            fontWeight="medium"
+            fontWeight="bold"
           >
-            Ao longo de nossa jornada já ajudamos mais de 100 empresas e
-            parceiros a conquistarem o seu espaço digital.
+            Ao longo de nossa jornada já foram mais de 100 empresas que ajudamos
+            a alcançar seu espaço digital.
           </Text>
         </Flex>
       </Flex>
     );
   }
 
-  function LandingPage() {
+  function Box() {
     return (
       <Flex
         style={{
@@ -374,6 +372,7 @@ const Home: NextPage = () => {
         }}
       >
         <Flex
+          boxShadow="rgba(0,0,0,0.1) 0 0 10px"
           mt="10"
           borderRadius="25"
           mx="auto"
@@ -399,6 +398,101 @@ const Home: NextPage = () => {
     );
   }
 
+  function Solutions() {
+    type SolutionProps = {
+      image: string;
+      title: string;
+    };
+
+    function Solution({ image, title }: SolutionProps) {
+      return (
+        <Flex
+          boxShadow="rgba(0,0,0,0.1) 0 0 10px"
+          mb={isMobile ? "5" : 0}
+          flexDir="column"
+          borderRadius="25"
+          style={{
+            height: isMobile ? 370 : 400,
+            width: isMobile ? "100%" : "49%",
+          }}
+          bg="#f0f0f0"
+        >
+          <ChakraImage
+            height={300}
+            fit="cover"
+            borderTopLeftRadius="25"
+            borderTopRightRadius="25"
+            src={image}
+          />
+          <Flex
+            style={{
+              height: isMobile ? 70 : 100,
+            }}
+            justify="center"
+            align="center"
+          >
+            <Text
+              color="#333"
+              fontSize={isMobile ? "2xl" : "3xl"}
+              fontWeight="bold"
+            >
+              {title}
+            </Text>
+          </Flex>
+        </Flex>
+      );
+    }
+
+    return (
+      <Flex
+        flexDir="column"
+        w="100%"
+        maxW={1000}
+        mx="auto"
+        mt={isMobile ? "4" : "10"}
+        style={{
+          paddingLeft: size.width < 1000 ? 20 : 0,
+          paddingRight: size.width < 1000 ? 20 : 0,
+        }}
+      >
+        <Flex flexDir="column" maxW={size.width > 1000 ? "50vw" : "100%"}>
+          <Text color="green" fontSize="lg">
+            Nossas soluções
+          </Text>
+          <Text
+            color="green"
+            fontSize={isMobile ? "xl" : "2xl"}
+            mb="2"
+            fontWeight="bold"
+          >
+            Nossas soluções são desenvolvidas sob medida, para que você consiga
+            alcançar seu objetivo.
+          </Text>
+        </Flex>
+        <Flex flexDir="column">
+          <Flex
+            w="100%"
+            mt="5"
+            flexDir={isMobile ? "column" : "row"}
+            justify="space-between"
+          >
+            <Solution image="/landingpage.jpeg" title="Página de venda" />
+            <Solution image="/ecommerce.jpeg" title="E-commerce" />
+          </Flex>
+          <Flex
+            w="100%"
+            mt={isMobile ? 0 : "5"}
+            flexDir={isMobile ? "column" : "row"}
+            justify="space-between"
+          >
+            <Solution image="/app.png" title="Aplicativo de celular" />
+            <Solution image="identity.jpeg" title="Identidade visual" />
+          </Flex>
+        </Flex>
+      </Flex>
+    );
+  }
+
   return (
     <>
       <Header text />
@@ -407,7 +501,6 @@ const Home: NextPage = () => {
         boxShadow="rgba(0,0,0,0.1) 0 0 2px"
         flexDir="column"
         bg="#FFF"
-        pb="10"
         flex="1"
       >
         <Flex
@@ -419,7 +512,7 @@ const Home: NextPage = () => {
           justify="center"
           w="100%"
           mx="auto"
-          maxW={1200}
+          maxW={1150}
           flexDir={size.width > 700 ? "row" : "column"}
           p={size.width < 700 ? "4" : 0}
         >
@@ -429,6 +522,7 @@ const Home: NextPage = () => {
             w="100%"
             justify={size.width > 600 ? "center" : "space-around"}
             p="10"
+            boxShadow="rgba(0,0,0,0.1) 0 0 10px"
             bg="#F0F0F0"
             borderRadius="25"
           >
@@ -544,7 +638,7 @@ const Home: NextPage = () => {
           >
             <Flex flexDir="column">
               <Flex>
-                <Text fontSize={size.width < 700 ? "2xl" : "3xl"} color="#333">
+                <Text fontSize={size.width < 700 ? "3xl" : "4xl"} color="#333">
                   Soluções que fazem a diferença.
                 </Text>
               </Flex>
@@ -617,10 +711,11 @@ const Home: NextPage = () => {
           </Flex>
         </Flex>
 
+        <Solutions />
         <AboutUs />
-        <LandingPage />
+        <Box />
         <ToKnow />
-        <LandingPage />
+        <Box />
         <Team />
       </Flex>
 
