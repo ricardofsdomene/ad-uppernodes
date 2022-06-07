@@ -32,10 +32,13 @@ import Header from "./components/Header";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
-
   const [cookies, setCookies] = useState(false);
-  const [whatsapp, setWhatsapp] = useState("");
+
   const [whatsappLabel, setWhatsappLabel] = useState("Enviar");
+
+  const [name, setName] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  // .replace(/[^\d]/g, "") => to transform it to int
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -74,6 +77,8 @@ const Home: NextPage = () => {
   }
 
   const size = useWindowSize();
+
+  const isMobile = size.width < 700;
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -170,6 +175,97 @@ const Home: NextPage = () => {
     );
   }
 
+  function Team() {
+    return (
+      <Flex
+        maxW={1000}
+        flexDir={size.width > 700 ? "row" : "column"}
+        w="100%"
+        justify="space-between"
+        align={isMobile ? "normal" : "center"}
+        mx="auto"
+        mt={size.width < 700 ? "6" : "10"}
+        style={{
+          paddingLeft: size.width > 1000 ? 0 : 20,
+          paddingRight: size.width < 1000 ? 20 : 55,
+        }}
+      >
+        <Flex flexDir="column" maxW={size.width > 700 ? "50vw" : "100%"}>
+          <Text color="green" fontSize="lg">
+            Sobre nós
+          </Text>
+          <Text color="green" fontSize="xl" mb="2" fontWeight="bold">
+            Somos uma agência digital desenvolvida para o mundo digital, não
+            somos uma empresa, somos um veiculo.
+          </Text>
+        </Flex>
+        <Flex flexDir="column" ml={size.width < 700 ? "0" : "10"}>
+          <Flex>
+            <ChakraImage
+              borderRadius="full"
+              style={{
+                height: isMobile ? 40 : 50,
+                width: isMobile ? 40 : 50,
+              }}
+              src="https://github.com/ricardofsdomene.png"
+            />
+            <ChakraImage
+              borderRadius="full"
+              style={{
+                height: isMobile ? 40 : 50,
+                width: isMobile ? 40 : 50,
+              }}
+              src="https://github.com/devaslife.png"
+            />
+            <ChakraImage
+              borderRadius="full"
+              style={{
+                height: isMobile ? 40 : 50,
+                width: isMobile ? 40 : 50,
+              }}
+              src="https://github.com/0xrfsd.png"
+            />
+            <ChakraImage
+              borderRadius="full"
+              style={{
+                height: isMobile ? 40 : 50,
+                width: isMobile ? 40 : 50,
+              }}
+              src="https://github.com/found.png"
+            />
+          </Flex>
+        </Flex>
+      </Flex>
+    );
+  }
+
+  function About() {
+    return (
+      <Flex
+        maxW={1000}
+        flexDir={size.width > 700 ? "row" : "column"}
+        w="100%"
+        justify="space-between"
+        align={isMobile ? "normal" : "center"}
+        mx="auto"
+        mt="10"
+        style={{
+          paddingLeft: size.width > 1000 ? 0 : 20,
+          paddingRight: size.width < 1000 ? 20 : 55,
+        }}
+      >
+        <Flex flexDir="column" maxW={size.width > 700 ? "50vw" : "100%"}>
+          <Text color="#555" fontSize="lg">
+            Achamos legal você saber
+          </Text>
+          <Text color="#333" fontSize="lg" mb="2" fontWeight="bold">
+            Ao longo de nossa jornada já ajudamos mais de 100 empresas e parceiros a conquistarem o seu espaço digital.
+          </Text>
+        </Flex>
+      </Flex>
+    );
+  }
+
   return (
     <>
       <Header text />
@@ -201,7 +297,7 @@ const Home: NextPage = () => {
             justify={size.width > 600 ? "center" : "space-around"}
             p="10"
             bg="#F0F0F0"
-            borderRadius="40"
+            borderRadius="25"
           >
             <Text fontSize="xl" maxW={600} color="#333">
               Conecte com a gente.
@@ -235,8 +331,9 @@ const Home: NextPage = () => {
                 border: "1px solid #e0e0e0",
               }}
               bg="#FFF"
+              value={name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setWhatsapp(e.target.value)
+                setName(e.target.value)
               }
             />
             <Text
@@ -308,7 +405,7 @@ const Home: NextPage = () => {
             flexDir="column"
             justify="space-between"
             style={{
-              paddingLeft: 20,
+              paddingLeft: size.width > 700 ? 20 : 0,
               paddingTop: size.width < 700 ? 20 : 0,
             }}
           >
@@ -323,7 +420,7 @@ const Home: NextPage = () => {
                 color="#333"
                 fontWeight="light"
               >
-                Para você, para seu público, para todos nós!
+                Para você e para seu público.
               </Text>
             </Flex>
             <Flex>
@@ -363,7 +460,7 @@ const Home: NextPage = () => {
                   src="/u3.jpg"
                 />
               </Flex>
-              {(size.width > 900) && (
+              {(size.width > 500 || size.width > 1000) && (
                 <Flex flexDir="column" ml="4">
                   <ChakraImage
                     zIndex={2}
@@ -386,6 +483,9 @@ const Home: NextPage = () => {
             </Flex>
           </Flex>
         </Flex>
+
+        <Team />
+        <About />
       </Flex>
 
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>

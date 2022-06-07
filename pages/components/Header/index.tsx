@@ -72,15 +72,15 @@ export default function Header({ text = false }) {
         style={{
           height: 90,
           width: "100%",
-          paddingLeft: 10,
-          paddingRight: 10,
+          paddingLeft: 20,
+          paddingRight: 20,
         }}
         justify="space-between"
         align="center"
       >
         <Link href="/" passHref>
           <a rel="noopener noreferrer">
-            <Flex>
+            <Flex align="center">
               <Image
                 cursor="pointer"
                 src="/logo.jpg"
@@ -95,11 +95,12 @@ export default function Header({ text = false }) {
                     marginLeft: 10,
                   }}
                   flexDir="column"
+                  align="center"
                 >
                   <Text fontSize="xl">Uppernodes</Text>
-                  <Text fontSize="sm" mt={-1} fontWeight="thin">
+                  {/* <Text fontSize="sm" mt={-1} fontWeight="thin">
                     A solução digital para o seu negócio
-                  </Text>
+                  </Text> */}
                 </Flex>
               )}
             </Flex>
