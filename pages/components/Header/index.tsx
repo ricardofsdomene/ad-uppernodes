@@ -66,7 +66,7 @@ export default function Header({ text = false }) {
   return (
     <>
       <Flex
-      zIndex={10}
+        zIndex={10}
         position="fixed"
         bg="#FFF"
         style={{
@@ -133,15 +133,13 @@ export default function Header({ text = false }) {
               margin: 0,
               padding: 10,
               justifyContent: "space-between",
+              alignItems: "center"
             }}
           >
             {size.width < 500 ? (
               <Flex flexDir="column">
                 <Text fontSize="xl" fontWeight="normal">
-                  Uppernodes.com
-                </Text>
-                <Text fontSize="xs" fontWeight="thin">
-                  A solução digital para o seu negócio
+                  Uppernodes
                 </Text>
               </Flex>
             ) : (
@@ -165,7 +163,37 @@ export default function Header({ text = false }) {
           <DrawerBody boxShadow="rgba(0,0,0,0.1) 0 0 2px"></DrawerBody>
 
           <DrawerFooter>
-            <Button colorScheme="blue">Save</Button>
+            <Flex flexDir="column" justify="flex-start" w="100%">
+              <Text color="#333" fontSize="md">
+                Contato
+              </Text>
+              <Link href="">
+                <Text
+                  mt="1"
+                  cursor="pointer"
+                  color="#333"
+                  fontSize="lg"
+                  fontWeight="bold"
+                >
+                  +1 347 370 0427
+                </Text>
+              </Link>
+              <Link href="">
+                <Text
+                  cursor="pointer"
+                  color="#333"
+                  fontSize="lg"
+                  fontWeight="bold"
+                >
+                  +1 347 370 0429
+                </Text>
+              </Link>
+              <Link href="">
+                <Text cursor="pointer" color="#333" fontSize="lg">
+                  contato@uppernodes.com
+                </Text>
+              </Link>
+            </Flex>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
