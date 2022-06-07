@@ -363,7 +363,13 @@ const Home: NextPage = () => {
     );
   }
 
-  function Box() {
+  type BoxProps = {
+    title: string;
+    content: string;
+    subcontent: string;
+  };
+
+  function Box({ title, content, subcontent }: BoxProps) {
     return (
       <Flex
         style={{
@@ -374,25 +380,68 @@ const Home: NextPage = () => {
         <Flex
           boxShadow="rgba(0,0,0,0.1) 0 0 10px"
           mt="10"
+          flexDir="column"
           borderRadius="25"
           mx="auto"
           maxW={1000}
           bg="#F0F0F0"
           py="10"
+          px="5"
           w="100%"
-          style={{
-            height: "70vh",
-          }}
         >
-          {/* <Text
+          <Text
             color="#333"
             w="100%"
             textAlign="center"
             fontWeight="bold"
             fontSize="4xl"
           >
-            Páginas de venda
-          </Text> */}
+            {title}
+          </Text>
+          <Text mt="6" color="#333" w="100%" textAlign="left" fontSize="lg">
+            {content}
+          </Text>
+          <Text mt="10" color="#333" w="100%" textAlign="left" fontSize="lg">
+            {subcontent}
+          </Text>
+          <Flex
+            mt="10"
+            flexDir={isMobile ? "column" : "row"}
+            justify="space-between"
+            w="100%"
+          >
+            <Flex
+              style={{
+                height: 50,
+                width: isMobile ? "100%" : "49%",
+              }}
+              mx="auto"
+              justify="center"
+              align="center"
+              bg="#333"
+              borderRadius="5"
+            >
+              <Text color="#FFF" fontWeight="bold">
+                Saiba mais
+              </Text>
+            </Flex>
+            <Flex
+              mt={isMobile ? "2" : 0}
+              style={{
+                height: 50,
+                width: isMobile ? "100%" : "49%",
+              }}
+              mx="auto"
+              justify="center"
+              align="center"
+              bg="#333"
+              borderRadius="5"
+            >
+              <Text color="#FFF" fontWeight="bold">
+                Saiba mais
+              </Text>
+            </Flex>
+          </Flex>
         </Flex>
       </Flex>
     );
@@ -496,6 +545,13 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
+        />
+      </Head>
+
       <Header text />
 
       <Flex
@@ -714,9 +770,13 @@ const Home: NextPage = () => {
 
         <Solutions />
         <AboutUs />
-        <Box />
+        <Box
+          title="Páginas de venda"
+          content="A página de venda ou mais conhecida como landing page têm o objetivo de sempre levar o usuário a executar uma conversão, seja cadastro em um formulário, download de um e-book ou até mesmo a compra direta de um produto ou serviço da empresa."
+          subcontent="Nós desenvolvemos landing pages para os mais diferentes ramos de atividade, e o ponto em comum em todas as empresas que aderiram a utilização das landing pages foi o aumento na captação de leads e na conversão em venda real, aumentando a receita e visibilidade das campanhas."
+        />
         <ToKnow />
-        <Box />
+        <Box title="" content="." subcontent="." />
         <Team />
       </Flex>
 
