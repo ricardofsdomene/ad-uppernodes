@@ -363,7 +363,7 @@ const Home: NextPage = () => {
                   src="/u3.jpg"
                 />
               </Flex>
-              {(size.width < 700 || size.width > 900) && (
+              {(size.width > 900) && (
                 <Flex flexDir="column" ml="4">
                   <ChakraImage
                     zIndex={2}
