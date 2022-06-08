@@ -567,6 +567,7 @@ const Home: NextPage = () => {
         boxShadow="rgba(0,0,0,0.1) 0 0 2px"
         flexDir="column"
         bg="#FFF"
+        pb="4"
         flex="1"
       >
         <Flex
