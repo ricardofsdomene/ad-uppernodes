@@ -446,7 +446,9 @@ const Home: NextPage = () => {
               bg="#eaeaea"
               borderRadius="5"
             >
-              <Text color="#333" fontWeight="bold">Saiba mais</Text>
+              <Text color="#333" fontWeight="bold">
+                Saiba mais
+              </Text>
             </Flex>
           </Flex>
         </Flex>
@@ -782,8 +784,23 @@ const Home: NextPage = () => {
           content="A página de venda ou mais conhecida como landing page têm o objetivo de sempre levar o usuário a executar uma conversão, seja cadastro em um formulário, download de um e-book ou até mesmo a compra direta de um produto ou serviço da empresa."
           subcontent="Nós desenvolvemos landing pages para os mais diferentes ramos de atividade, e o ponto em comum em todas as empresas que aderiram a utilização das landing pages foi o aumento na captação de leads e na conversão em venda real, aumentando a receita e visibilidade das campanhas."
         />
-        <ToKnow />
-        <Box title="" content="." subcontent="." />
+        {/* <Box
+          title="E-commerces"
+          content="-"
+          subcontent="-"
+        />
+        <Box
+          title="Aplicativos de celular"
+          content="-"
+          subcontent="-"
+        />
+        <Box
+          title="Identidades visuais"
+          content="-"
+          subcontent="-"
+        /> */}
+        {/* <ToKnow /> */}
+        {/* <Box title="" content="." subcontent="." /> */}
         <Team />
       </Flex>
 
