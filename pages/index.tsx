@@ -30,6 +30,8 @@ import {
 } from "react-icons/ri";
 import Header from "./components/Header";
 
+import { FiArrowUpRight } from "react-icons/fi";
+
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [cookies, setCookies] = useState(false);
@@ -184,7 +186,7 @@ const Home: NextPage = () => {
         justify="space-between"
         align={isMobile ? "normal" : "center"}
         mx="auto"
-        mt="10"
+        mt="12"
         style={{
           paddingLeft: size.width > 1000 ? 0 : 20,
           paddingRight: size.width < 1000 ? 20 : 55,
@@ -217,7 +219,7 @@ const Home: NextPage = () => {
         justify="space-between"
         align={isMobile ? "normal" : "center"}
         mx="auto"
-        mt={size.width < 700 ? "6" : "10"}
+        mt="12"
         style={{
           paddingLeft: size.width > 1000 ? 0 : 20,
           paddingRight: size.width < 1000 ? 20 : 55,
@@ -339,7 +341,7 @@ const Home: NextPage = () => {
         justify="space-between"
         align={isMobile ? "normal" : "center"}
         mx="auto"
-        mt="10"
+        mt="12"
         style={{
           paddingLeft: size.width > 1000 ? 0 : 20,
           paddingRight: size.width < 1000 ? 20 : 55,
@@ -379,7 +381,7 @@ const Home: NextPage = () => {
       >
         <Flex
           boxShadow="rgba(0,0,0,0.1) 0 0 10px"
-          mt="10"
+          mt="12"
           flexDir="column"
           borderRadius="25"
           mx="auto"
@@ -392,7 +394,7 @@ const Home: NextPage = () => {
           <Text
             color="#333"
             w="100%"
-            textAlign="center"
+            textAlign="left"
             fontWeight="bold"
             fontSize="4xl"
           >
@@ -411,35 +413,40 @@ const Home: NextPage = () => {
             w="100%"
           >
             <Flex
+              cursor="pointer"
               style={{
                 height: 50,
                 width: isMobile ? "100%" : "49%",
               }}
               mx="auto"
-              justify="center"
+              border="1px solid #dfdfdf"
+              justify="space-between"
+              px="5"
               align="center"
-              bg="#333"
+              bg="#FFF"
               borderRadius="5"
             >
-              <Text color="#FFF" fontWeight="bold">
-                Saiba mais
+              <Text color="#333" fontWeight="bold">
+                Entrar em contato
               </Text>
+              <Icon ml="2" as={FiArrowUpRight} color="#333" fontSize="lg" />
             </Flex>
             <Flex
+              cursor="pointer"
               mt={isMobile ? "2" : 0}
               style={{
                 height: 50,
                 width: isMobile ? "100%" : "49%",
               }}
               mx="auto"
-              justify="center"
+              border="1px solid #d0d0d0"
+              justify="flex-start"
+              px="5"
               align="center"
-              bg="#333"
+              bg="#eaeaea"
               borderRadius="5"
             >
-              <Text color="#FFF" fontWeight="bold">
-                Saiba mais
-              </Text>
+              <Text color="#333" fontWeight="bold">Saiba mais</Text>
             </Flex>
           </Flex>
         </Flex>
@@ -499,7 +506,7 @@ const Home: NextPage = () => {
         w="100%"
         maxW={1000}
         mx="auto"
-        mt={isMobile ? "4" : "10"}
+        mt={isMobile ? "12" : "10"}
         style={{
           paddingLeft: size.width < 1000 ? 20 : 0,
           paddingRight: size.width < 1000 ? 20 : 0,
@@ -519,7 +526,7 @@ const Home: NextPage = () => {
             alcançar seu objetivo.
           </Text>
         </Flex>
-        <Flex flexDir="column">
+        <Flex flexDir="column" mt="5">
           <Flex
             w="100%"
             mt="5"
