@@ -275,22 +275,24 @@ const Home: NextPage = () => {
           >
             e dependendo você também pode fazer parte.
           </Text>
-          <Flex
-            cursor="pointer"
-            mt="5"
-            bg="#0b570b"
-            borderRadius="5"
-            justify="center"
-            align="center"
-            style={{
-              height: 50,
-              width: isMobile ? "100%" : 300,
-            }}
-          >
-            <Text color="#FFF" fontWeight="bold">
-              Quer fazer parte da equipe?
-            </Text>
-          </Flex>
+          <Link href="https://wa.link/ld57qz" passHref>
+            <Flex
+              cursor="pointer"
+              mt="5"
+              bg="#0b570b"
+              borderRadius="5"
+              justify="center"
+              align="center"
+              style={{
+                height: 50,
+                width: isMobile ? "100%" : 300,
+              }}
+            >
+              <Text color="#FFF" fontWeight="bold">
+                Quer fazer parte da equipe?
+              </Text>
+            </Flex>
+          </Link>
         </Flex>
         <Flex
           flexDir="column"
@@ -412,44 +414,48 @@ const Home: NextPage = () => {
             justify="space-between"
             w="100%"
           >
-            <Flex
-              cursor="pointer"
-              style={{
-                height: 50,
-                width: isMobile ? "100%" : "49%",
-              }}
-              mx="auto"
-              border="1px solid #dfdfdf"
-              justify="space-between"
-              px="5"
-              align="center"
-              bg="#FFF"
-              borderRadius="5"
-            >
-              <Text color="#333" fontWeight="bold">
-                Entrar em contato
-              </Text>
-              <Icon ml="2" as={FiArrowUpRight} color="#333" fontSize="lg" />
-            </Flex>
-            <Flex
-              cursor="pointer"
-              mt={isMobile ? "2" : 0}
-              style={{
-                height: 50,
-                width: isMobile ? "100%" : "49%",
-              }}
-              mx="auto"
-              border="1px solid #d0d0d0"
-              justify="flex-start"
-              px="5"
-              align="center"
-              bg="#eaeaea"
-              borderRadius="5"
-            >
-              <Text color="#333" fontWeight="bold">
-                Saiba mais
-              </Text>
-            </Flex>
+            <Link href="https://wa.link/cg3ffk" passHref>
+              <Flex
+                cursor="pointer"
+                style={{
+                  height: 50,
+                  width: isMobile ? "100%" : "49%",
+                }}
+                mx="auto"
+                border="1px solid #dfdfdf"
+                justify="space-between"
+                px="5"
+                align="center"
+                bg="#FFF"
+                borderRadius="5"
+              >
+                <Text color="#333" fontWeight="bold">
+                  Entrar em contato
+                </Text>
+                <Icon ml="2" as={FiArrowUpRight} color="#333" fontSize="lg" />
+              </Flex>
+            </Link>
+            <Link href="https://wa.link/cg3ffk" passHref>
+              <Flex
+                cursor="pointer"
+                mt={isMobile ? "2" : 0}
+                style={{
+                  height: 50,
+                  width: isMobile ? "100%" : "49%",
+                }}
+                mx="auto"
+                border="1px solid #d0d0d0"
+                justify="flex-start"
+                px="5"
+                align="center"
+                bg="#eaeaea"
+                borderRadius="5"
+              >
+                <Text color="#333" fontWeight="bold">
+                  Saiba mais
+                </Text>
+              </Flex>
+            </Link>
           </Flex>
         </Flex>
       </Flex>
