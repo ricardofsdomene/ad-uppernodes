@@ -131,7 +131,7 @@ const Home: NextPage = () => {
       } else {
         setLoading(true);
         axios
-          .post("http://localhost:3000/api/lead", {
+          .post("https://serverless.uppernodes.com/api/lead", {
             name,
             phone,
           })
