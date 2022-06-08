@@ -15,9 +15,11 @@ import {
   Input,
   Icon,
   Spinner,
+  useToast,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import InputMask from "react-input-mask";
@@ -36,11 +38,15 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [cookies, setCookies] = useState(false);
 
-  const [whatsappLabel, setWhatsappLabel] = useState("Enviar");
+  const [leadLabel, setLeadLabel] = useState("Enviar");
 
   const [name, setName] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
+  const [phone, setPhone] = useState("");
   // .replace(/[^\d]/g, "") => to transform it to int
+
+  const [leadSent, setLeadSent] = useState(false);
+
+  const [show, setShow] = useState("");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -87,6 +93,77 @@ const Home: NextPage = () => {
     md: true,
     lg: true,
   });
+
+  const toast = useToast();
+
+  const handleContact = async () => {
+    try {
+      if (leadSent) {
+        toast({
+          status: "error",
+          description: "Já recebemos o seu contato.",
+        });
+      } else if (!name || !phone) {
+        toast({
+          status: "error",
+          description: "Como entraremos em contato?",
+        });
+      } else if (name.split(" ").length < 2) {
+        toast({
+          status: "error",
+          description: "Por favor insira seu nome completo",
+        });
+      } else if (name.length < 3) {
+        toast({
+          status: "error",
+          description: "Esse nome está certo?",
+        });
+      } else if (phone.length !== 18) {
+        toast({
+          status: "error",
+          description: "Esse celular está certo?",
+        });
+      } else if (phone[phone.length - 1] === "_") {
+        toast({
+          status: "error",
+          description: "Esse celular está certo?",
+        });
+      } else {
+        setLoading(true);
+        axios
+          .post("http://localhost:3000/api/lead", {
+            name,
+            phone,
+          })
+          .then((res) => {
+            if (res.status === 201) {
+              toast({
+                description: "Entraremos em contato em breve.",
+                status: "success",
+              });
+              setName("");
+              setPhone("");
+              setLeadLabel("Enviado");
+              setLeadSent(true);
+              setLoading(false);
+            } else {
+              toast({
+                description: "Tente novamente mais tarde",
+                status: "error",
+                duration: 2000,
+              });
+              setLoading(false);
+            }
+          });
+      }
+    } catch (err) {
+      toast({
+        description: "Tente novamente mais tarde",
+        status: "error",
+        duration: 2000,
+      });
+    }
+  };
 
   function Cookies() {
     return (
@@ -471,6 +548,7 @@ const Home: NextPage = () => {
     function Solution({ image, title }: SolutionProps) {
       return (
         <Flex
+          onClick={() => setShow(title)}
           boxShadow="rgba(0,0,0,0.1) 0 0 10px"
           mb={isMobile ? "5" : 0}
           flexDir="column"
@@ -656,21 +734,15 @@ const Home: NextPage = () => {
                 border: "1px solid #e0e0e0",
               }}
               mask="+55 (99) 999999999"
-              value={whatsapp}
+              value={phone}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setWhatsapp(e.target.value)
+                setPhone(e.target.value)
               }
             />
-            <Flex
+            <Button
+              disabled={leadSent}
               mt="4"
-              onClick={() => {
-                setLoading(true);
-                setTimeout(() => {
-                  setWhatsappLabel("Enviado");
-                  setWhatsapp("");
-                  setLoading(false);
-                }, 1000);
-              }}
+              onClick={handleContact}
               cursor="pointer"
               style={{
                 marginTop: 30,
@@ -678,8 +750,8 @@ const Home: NextPage = () => {
                 width: "100%",
               }}
               borderRadius="5"
-              justify="center"
-              align="center"
+              justifyContent="center"
+              alignItems="center"
               bg="#3404fb"
             >
               {loading ? (
@@ -687,9 +759,9 @@ const Home: NextPage = () => {
               ) : (
                 <Flex align="center">
                   <Text color="#FFF" fontWeight="semibold">
-                    {whatsappLabel}
+                    {leadLabel}
                   </Text>
-                  {whatsappLabel === "Enviado" && (
+                  {leadLabel === "Enviado" && (
                     <Icon
                       as={RiCheckboxCircleLine}
                       fontSize="md"
@@ -699,7 +771,7 @@ const Home: NextPage = () => {
                   )}
                 </Flex>
               )}
-            </Flex>
+            </Button>
           </Flex>
           <Flex
             flexDir="column"
